@@ -1,0 +1,35 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">users</h3>
+  </div>
+  <div class="panel-body">
+	<div class="table-responsive">
+		<table class="table table-bordered table-hover" id="users">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Name</th>
+					<th scope="col">E-mail</th>
+					<th scope="col">Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% _.each(users, function(user, index) {%>
+				<tr>
+					<td><%= ++index %></td>
+					<td><%= user.name %></td>
+					<td><%= user.email %></td>
+					<%if (user.active) { %>
+						<td class="dw-active">Active<a href="/user/deactivate?id=<%= user.id %>" class="btn btn-danger btn-xxs pull-right" data-toggle="tooltip" data-placement="left" title="disable this user" >Disable&nbsp;</a>
+					<% } else {%>
+						<td class="dw-inactive">
+							Disabled<a href="/user/activate?id=<%= user.id %>" class="btn btn-success btn-xxs pull-right" data-toggle="tooltip" data-placement="left" title="activate this user" >Activate</a>
+						<% } %>
+					</td>
+				</tr>
+				<% });%>
+			</tbody>
+		</table>
+	</div>
+  </div>
+</div>
