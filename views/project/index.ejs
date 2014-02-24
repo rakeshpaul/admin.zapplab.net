@@ -28,36 +28,6 @@
 				</td>
 			</tr>
 			<% });%>
-			<% _.each(projects, function(project, index) {%>
-			<tr>
-				<td><%= ++index %></td>
-				<td><%= project.name %></td>
-				<%if (project.active) { %>
-				<td class="dw-active">
-					Active<a href="/project/deactivate?id=<%= project.id %>" class="btn btn-danger btn-xs pull-right" data-toggle="tooltip" data-placement="left" title="disable this project" >Disable&nbsp;</a>
-
-				<% } else {%>
-				<td class="dw-inactive">
-					Disabled<a href="/project/activate?id=<%= project.id %>" class="btn btn-success btn-xs pull-right" data-toggle="tooltip" data-placement="left" title="activate this project" >Activate</a>
-				<% } %>
-				</td>
-			</tr>
-			<% });%>
-			<% _.each(projects, function(project, index) {%>
-			<tr>
-				<td><%= ++index %></td>
-				<td><%= project.name %></td>
-				<%if (project.active) { %>
-				<td class="dw-active">
-					Active<a href="/project/deactivate?id=<%= project.id %>" class="btn btn-danger btn-xs pull-right" data-toggle="tooltip" data-placement="left" title="disable this project" >Disable&nbsp;</a>
-
-				<% } else {%>
-				<td class="dw-inactive">
-					Disabled<a href="/project/activate?id=<%= project.id %>" class="btn btn-success btn-xs pull-right" data-toggle="tooltip" data-placement="left" title="activate this project" >Activate</a>
-				<% } %>
-				</td>
-			</tr>
-			<% });%>
 		</tbody>
 	</table>
 
