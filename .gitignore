@@ -5,7 +5,8 @@
 .waterline
 .rigging
 .tmp
-
+**/.sass-cache
+**/.sass-cache/*
 
 ########################
 # node.js / npm
