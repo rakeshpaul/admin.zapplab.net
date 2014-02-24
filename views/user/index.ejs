@@ -20,10 +20,10 @@
 					<td><%= user.name %></td>
 					<td><%= user.email %></td>
 					<%if (user.active) { %>
-						<td class="dw-active">Active<a href="/user/deactivate?id=<%= user.id %>" class="btn btn-danger btn-xxs pull-right" data-toggle="tooltip" data-placement="left" title="disable this user" >Disable&nbsp;</a>
+						<td class="dw-active">Active<a href="/user/deactivate?id=<%= user.id %>" class="btn btn-danger btn-xs pull-right" data-toggle="tooltip" data-placement="left" title="disable this user" >Disable&nbsp;</a>
 					<% } else {%>
 						<td class="dw-inactive">
-							Disabled<a href="/user/activate?id=<%= user.id %>" class="btn btn-success btn-xxs pull-right" data-toggle="tooltip" data-placement="left" title="activate this user" >Activate</a>
+							Disabled<a href="/user/activate?id=<%= user.id %>" class="btn btn-success btn-xs pull-right" data-toggle="tooltip" data-placement="left" title="activate this user" >Activate</a>
 						<% } %>
 					</td>
 				</tr>
