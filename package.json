@@ -18,5 +18,8 @@
   "main": "app.js",
   "repository": "",
   "author": "",
-  "license": ""
+  "license": "",
+  "devDependencies": {
+    "grunt-contrib-less": "~0.9.0"
+  }
 }
