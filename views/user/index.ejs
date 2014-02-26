@@ -24,7 +24,12 @@
 					<% } else {%>
 						<td class="dw-inactive">
 							Disabled<a href="/user/activate?id=<%= user.id %>" class="btn btn-success btn-xs pull-right" data-toggle="tooltip" data-placement="left" title="activate this user" >Activate</a>
-						<% } %>
+					<% } %>
+					<%if (user.admin) { %>
+						<a href="/user/revokeadmin?id=<%= user.id %>" class="btn btn-danger btn-xs pull-right dw-margin-right" data-toggle="tooltip" data-placement="left" title="activate this user" >Revoke Admin</a>
+					<% } else {%>
+						<a href="/user/makeadmin?id=<%= user.id %>" class="btn btn-success btn-xs pull-right dw-margin-right" data-toggle="tooltip" data-placement="left" title="activate this user" >&nbsp;Make Admin&nbsp;&nbsp;</a>
+					<% } %>
 					</td>
 				</tr>
 				<% });%>

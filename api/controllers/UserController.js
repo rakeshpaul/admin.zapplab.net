@@ -118,6 +118,93 @@ module.exports = {
 					return res.redirect('/user');
 				});
 		});
-	}
+	},
 
+	makeadmin: function(req, res, next) {
+		console.log('inside user > makeadmin');
+		User.findOne({
+			id: req.param('id')
+		}).done(function(err, user) {
+
+			// Error handling
+			if (err) {
+				// Found multiple users!
+				req.session.flash = {
+					err: err
+				};
+				return next(err);
+
+			}
+			if (!user) {
+				req.session.flash = {
+					err: "Error changing user to admin! user doesn't exist"
+				};
+				return res.redirect('/user');
+			}
+
+			User.update({
+					id: req.param('id')
+				}, {
+					admin: true
+				},
+				function(err) {
+					console.log('inside user > makeadmin > err' + JSON.stringify(err));
+					// Error handling
+					if (err) {
+						req.session.flash = {
+							err: 'Error changing user <strong>' + user.name + '</strong>. to admin user'
+						};
+						return res.redirect('/user');
+					}
+					req.session.flash = {
+						msg: 'Successfully changed user <strong>' + user.name + '</strong>. to an admin user'
+					};
+					return res.redirect('/user');
+				});
+		});
+	},
+
+	revokeadmin: function(req, res, next) {
+		console.log('inside user > revokeadmin');
+		User.findOne({
+			id: req.param('id')
+		}).done(function(err, user) {
+
+			// Error handling
+			if (err) {
+				// Found multiple users!
+				req.session.flash = {
+					err: err
+				};
+				return next(err);
+
+			}
+			if (!user) {
+				req.session.flash = {
+					err: "Error revoking admin rights for user! user doesn't exist"
+				};
+				return res.redirect('/user');
+			}
+
+			User.update({
+					id: req.param('id')
+				}, {
+					admin: false
+				},
+				function(err) {
+					console.log('inside user > revoke > err' + JSON.stringify(err));
+					// Error handling
+					if (err) {
+						req.session.flash = {
+							err: 'Error revoking admin rights for user <strong>' + user.name + '</strong>.'
+						};
+						return res.redirect('/user');
+					}
+					req.session.flash = {
+						msg: 'Successfully revoked admin rights for user <strong>' + user.name + '</strong>.'
+					};
+					return res.redirect('/user');
+				});
+		});
+	}
 };
